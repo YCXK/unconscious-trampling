@@ -1,82 +1,210 @@
-/* 英雄区域 - 改为灰色背景 */
+/* 全局背景 - 浅灰渐变白色 */
+:global(body) {
+  background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* 英雄区域 - 去掉原有背景，使用透明 */
 .heroBanner {
-  padding: 8rem 1rem 1rem 1rem;
+  padding: 6rem 1rem 2rem 1rem;
   text-align: center;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* 灰色渐变 */
-  border-bottom: 1px solid #dee2e6;
+  background: transparent; /* 透明背景 */
   position: relative;
-  min-height: 40vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  min-height: 30vh;
 }
 
 .heroContent {
   max-width: 800px;
   margin: 0 auto;
-  padding-top: 2rem;
 }
 
 .heroTitle {
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #2c3e50; /* 深灰色文字 */
+  color: #000000; /* 黑色标题 */
   letter-spacing: -0.5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .heroSubtitle {
   font-size: 1.5rem;
-  color: #6c757d; /* 中灰色 */
-  margin-bottom: 0;
+  color: #333333; /* 深灰色副标题 */
+  margin-bottom: 3rem;
   font-weight: 400;
 }
 
 /* 主内容区域 */
 .main {
-  padding: 0 1rem 3rem 1rem;
-  margin-top: -50px;
+  padding: 0 1rem 4rem 1rem;
   position: relative;
-  z-index: 1;
-  background: #f8f9fa; /* 浅灰色背景 */
 }
 
-/* 分类卡片 */
+/* 分类容器 */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* 分类卡片 - 墨蓝色 */
 .categoryCard {
   display: block;
-  padding: 2rem 1.5rem;
-  background: white;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0; /* 灰色边框 */
+  padding: 2.5rem 2rem;
+  background: linear-gradient(145deg, #1e3a8a, #1e40af); /* 墨蓝色渐变 */
+  border-radius: 16px;
   text-decoration: none;
-  color: inherit;
+  color: #ffffff;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 浅灰色阴影 */
+  box-shadow: 
+    0 4px 20px rgba(30, 58, 138, 0.2),
+    0 8px 30px rgba(0, 0, 0, 0.1);
   height: 100%;
-  min-height: 180px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
+/* 卡片悬停效果 */
 .categoryCard:hover {
-  border-color: #adb5bd; /* 灰色悬停边框 */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* 灰色阴影 */
-  transform: translateY(-4px);
+  transform: translateY(-8px);
+  box-shadow: 
+    0 12px 40px rgba(30, 58, 138, 0.3),
+    0 15px 35px rgba(0, 0, 0, 0.15);
   text-decoration: none;
 }
 
+/* 卡片光泽效果 */
+.categoryCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.categoryCard:hover::before {
+  left: 100%;
+}
+
 .categoryContent h3 {
-  font-size: 1.6rem;
-  margin-bottom: 0.75rem;
-  color: #2c3e50; /* 深灰色 */
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ffffff; /* 卡片内标题白色 */
   font-weight: 600;
+  position: relative;
+  z-index: 1;
 }
 
 .categoryContent p {
-  color: #6c757d; /* 中灰色 */
+  color: rgba(255, 255, 255, 0.9); /* 卡片内文字浅白色 */
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+  .heroBanner {
+    padding: 5rem 1rem 1.5rem 1rem;
+    min-height: 25vh;
+  }
+  
+  .heroTitle {
+    font-size: 3rem;
+  }
+  
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .categoryCard {
+    padding: 2rem 1.5rem;
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroBanner {
+    padding: 4rem 1rem 1rem 1rem;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .main {
+    padding: 0 0.5rem 3rem 0.5rem;
+  }
+  
+  .categories {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 400px;
+  }
+  
+  .categoryCard {
+    padding: 2rem 1.5rem;
+    min-height: 170px;
+  }
+  
+  .categoryContent h3 {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroBanner {
+    padding: 3rem 1rem 1rem 1rem;
+  }
+  
+  .heroTitle {
+    font-size: 2rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .categoryCard {
+    padding: 1.75rem 1.25rem;
+    min-height: 160px;
+  }
+  
+  .categoryContent h3 {
+    font-size: 1.5rem;
+  }
+  
+  .categoryContent p {
+    font-size: 1rem;
+  }
 }
