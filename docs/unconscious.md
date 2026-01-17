@@ -178,46 +178,31 @@ title: 无意识文档库
 }
 </style>
 
-<script>
-// 页面切换函数
-function showPage(pageNum) {
-  // 移除所有active状态
-  document.querySelectorAll('.page-btn').forEach(function(btn) {
-    btn.classList.remove('active');
-  });
-  
-  // 隐藏所有页面
-  document.querySelectorAll('.page-content').forEach(function(page) {
-    page.style.display = 'none';
-  });
-  
-  // 显示对应页面
-  var pageElement = document.getElementById('page-' + pageNum);
-  if (pageElement) {
-    pageElement.style.display = 'block';
-  }
-  
-  // 设置对应按钮为active
-  var buttons = document.querySelectorAll('.page-btn');
-  for (var i = 0; i < buttons.length; i++) {
-    if (buttons[i].getAttribute('data-page') === String(pageNum)) {
-      buttons[i].classList.add('active');
-      break;
-    }
-  }
-}
+<!-- 修复后的脚本部分 -->
+<div dangerouslySetInnerHTML={{__html: `
+  <script>
+    // 页面切换函数
+    function showPage(pageNum) {
+      document.querySelectorAll('.page-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.page-content').forEach(page => page.style.display = 'none');
+      
+      const pageElement = document.getElementById('page-' + pageNum);
+      if (pageElement) pageElement.style.display = 'block';
 
-// 事件监听器
-document.addEventListener('DOMContentLoaded', function() {
-  var pagination = document.getElementById('pagination');
-  if (pagination) {
-    pagination.addEventListener('click', function(event) {
-      event.preventDefault();
-      if (event.target.classList.contains('page-btn')) {
-        var pageNum = event.target.getAttribute('data-page');
-        showPage(pageNum);
+      document.querySelector(\`.page-btn[data-page="\${pageNum}"]\`)?.classList.add('active');
+    }
+
+    // 事件监听器
+    document.addEventListener('DOMContentLoaded', () => {
+      const pagination = document.getElementById('pagination');
+      if (pagination) {
+        pagination.addEventListener('click', e => {
+          if (e.target.classList.contains('page-btn')) {
+            e.preventDefault();
+            showPage(e.target.getAttribute('data-page'));
+          }
+        });
       }
     });
-  }
-});
-</script>
+  </script>
+`}} />
