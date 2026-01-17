@@ -4,15 +4,20 @@ title: 无意识文档库
 
 # 📚 无意识文档库
 
-<!-- 分页导航 - 使用hash锚点实现 -->
+<!-- 分页导航 -->
 <div className="pagination">
-  <a href="#page1" className="page-btn active">第 1 页</a>
-  <a href="#page2" className="page-btn">第 2 页</a>
-  <a href="#page3" className="page-btn">第 3 页</a>
+  <label htmlFor="page1-radio" className="page-btn active">第 1 页</label>
+  <label htmlFor="page2-radio" className="page-btn">第 2 页</label>
+  <label htmlFor="page3-radio" className="page-btn">第 3 页</label>
 </div>
 
-<!-- 第1页 - 默认显示 -->
-<div id="page1" className="page-content">
+<!-- 隐藏的单选框，用于控制页面显示 -->
+<input type="radio" id="page1-radio" name="page" defaultChecked style={{display: 'none'}} />
+<input type="radio" id="page2-radio" name="page" style={{display: 'none'}} />
+<input type="radio" id="page3-radio" name="page" style={{display: 'none'}} />
+
+<!-- 第1页 -->
+<div className="page-content page-1">
   <div className="doc-grid">
     <a href="/unconscious/doc1" className="doc-card">
       <h3>文档 1</h3>
@@ -34,7 +39,7 @@ title: 无意识文档库
 </div>
 
 <!-- 第2页 -->
-<div id="page2" className="page-content">
+<div className="page-content page-2">
   <div className="doc-grid">
     <a href="/unconscious/doc16" className="doc-card">
       <h3>文档 16</h3>
@@ -56,7 +61,7 @@ title: 无意识文档库
 </div>
 
 <!-- 第3页 -->
-<div id="page3" className="page-content">
+<div className="page-content page-3">
   <div className="doc-grid">
     <a href="/unconscious/doc31" className="doc-card">
       <h3>文档 31</h3>
@@ -110,16 +115,6 @@ title: 无意识文档库
   border-color: #adb5bd;
 }
 
-/* 使用 :target 选择器控制按钮激活状态 */
-.page-btn.active,
-#page1:target ~ .pagination a[href="#page1"],
-#page2:target ~ .pagination a[href="#page2"],
-#page3:target ~ .pagination a[href="#page3"] {
-  background: #2d3748;
-  color: white;
-  border-color: #2d3748;
-}
-
 /* 文档网格 */
 .doc-grid {
   display: grid;
@@ -171,31 +166,31 @@ title: 无意识文档库
   opacity: 0.9;
 }
 
-/* 页面内容显示控制 */
+/* 页面内容显示控制 - 使用CSS :checked 选择器 */
 .page-content {
   display: none;
 }
 
 /* 默认显示第一页 */
-#page1 {
+#page1-radio:checked ~ .page-1 {
   display: block;
 }
 
-/* 使用 :target 选择器控制页面显示 */
-#page1:target,
-#page2:target,
-#page3:target {
+#page2-radio:checked ~ .page-2 {
   display: block;
 }
 
-/* 当一个页面显示时，隐藏其他页面 */
-#page1:target ~ #page2,
-#page1:target ~ #page3,
-#page2:target ~ #page1,
-#page2:target ~ #page3,
-#page3:target ~ #page1,
-#page3:target ~ #page2 {
-  display: none;
+#page3-radio:checked ~ .page-3 {
+  display: block;
+}
+
+/* 按钮激活状态 */
+#page1-radio:checked ~ .pagination label[for="page1-radio"],
+#page2-radio:checked ~ .pagination label[for="page2-radio"],
+#page3-radio:checked ~ .pagination label[for="page3-radio"] {
+  background: #2d3748;
+  color: white;
+  border-color: #2d3748;
 }
 
 /* 返回首页 */
