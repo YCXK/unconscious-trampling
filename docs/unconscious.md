@@ -179,6 +179,7 @@ title: 无意识文档库
 </style>
 
 <script>
+{`
 // 这是必须的，放在文件最后
 function showPage(pageNum) {
   // 移除所有active状态
@@ -191,10 +192,17 @@ function showPage(pageNum) {
     page.style.display = 'none';
   });
   
-  // 设置当前按钮为active
-  event.target.classList.add('active');
-  
   // 显示对应页面
   document.getElementById('page-' + pageNum).style.display = 'block';
+  
+  // 设置对应按钮为active
+  const buttons = document.querySelectorAll('.page-btn');
+  for (let i = 0; i < buttons.length; i++) {
+    if (buttons[i].textContent.includes(`第 \${pageNum} 页`)) {
+      buttons[i].classList.add('active');
+      break;
+    }
+  }
 }
+`}
 </script>
