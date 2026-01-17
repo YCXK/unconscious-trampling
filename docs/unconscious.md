@@ -148,43 +148,43 @@ title: 无意识文档库
 
 <!-- 关键修复：将 Script 包裹在 div 中 -->
 <div dangerouslySetInnerHTML={{__html: `
-  <script>
-    function showPage(pageNum) {
-      // 1. 移除所有按钮的 active 状态
-      document.querySelectorAll('.page-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
+<script>
+  function showPage(pageNum) {
+    // 1. 移除所有按钮的 active 状态
+    document.querySelectorAll('.page-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
 
-      // 2. 隐藏所有页面内容
-      document.querySelectorAll('.page-content').forEach(page => {
-        page.style.display = 'none';
-      });
+    // 2. 隐藏所有页面内容
+    document.querySelectorAll('.page-content').forEach(page => {
+      page.style.display = 'none';
+    });
 
-      // 3. 显示目标页面
-      const targetPage = document.getElementById('page-' + pageNum);
-      if (targetPage) {
-        targetPage.style.display = 'block';
-      }
-
-      // 4. 激活对应按钮
-      const activeBtn = document.querySelector(\`.page-btn[data-page="\${pageNum}"]\`);
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-      }
+    // 3. 显示目标页面
+    const targetPage = document.getElementById('page-' + pageNum);
+    if (targetPage) {
+      targetPage.style.display = 'block';
     }
 
-    // 页面加载完成后绑定事件
-    document.addEventListener('DOMContentLoaded', function() {
-      const pagination = document.getElementById('pagination');
-      if (pagination) {
-        pagination.addEventListener('click', function(e) {
-          if (e.target.classList.contains('page-btn')) {
-            e.preventDefault();
-            const pageNum = e.target.getAttribute('data-page');
-            showPage(pageNum);
-          }
-        });
-      }
-    });
-  </script>
+    // 4. 激活对应按钮
+    const activeBtn = document.querySelector(\`.page-btn[data-page="\${pageNum}"]\`);
+    if (activeBtn) {
+      activeBtn.classList.add('active');
+    }
+  }
+
+  // 页面加载完成后绑定事件
+  document.addEventListener('DOMContentLoaded', function() {
+    const pagination = document.getElementById('pagination');
+    if (pagination) {
+      pagination.addEventListener('click', function(e) {
+        if (e.target.classList.contains('page-btn')) {
+          e.preventDefault();
+          const pageNum = e.target.getAttribute('data-page');
+          showPage(pageNum);
+        }
+      });
+    }
+  });
+</script>
 `}} />
