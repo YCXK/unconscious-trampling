@@ -5,10 +5,10 @@ title: 无意识文档库
 # 📚 无意识文档库
 
 <!-- 分页导航 -->
-<div className="pagination" id="pageNav">
-  <button type="button" data-target="page1" className="page-btn active">第 1 页</button>
-  <button type="button" data-target="page2" className="page-btn">第 2 页</button>
-  <button type="button" data-target="page3" className="page-btn">第 3 页</button>
+<div className="pagination">
+  <a href="#page1" className="page-btn active">第 1 页</a>
+  <a href="#page2" className="page-btn">第 2 页</a>
+  <a href="#page3" className="page-btn">第 3 页</a>
 </div>
 
 <!-- 第1页 -->
@@ -235,8 +235,6 @@ title: 无意识文档库
   font-size: 0.95rem;
   transition: all 0.2s ease;
   cursor: pointer;
-  border: none;
-  font-family: inherit;
 }
 
 .page-btn:hover {
@@ -346,55 +344,85 @@ title: 无意识文档库
 `}</style>
 
 <script>{`
-// 简单可靠的页面切换功能
-function initializePageSwitcher() {
-  console.log('初始化页面切换器');
+// 页面切换功能 - 修复版本
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM已加载，初始化分页功能');
   
-  const buttons = document.querySelectorAll('.page-btn');
-  const pages = document.querySelectorAll('.page-content');
+  const pageButtons = document.querySelectorAll('.page-btn');
+  const pageContents = document.querySelectorAll('.page-content');
   
-  // 检查元素是否存在
-  if (buttons.length === 0) {
-    console.error('未找到分页按钮');
-    return;
+  console.log('找到按钮数量:', pageButtons.length);
+  console.log('找到页面数量:', pageContents.length);
+  
+  // 处理页面切换的函数
+  function switchToPage(pageId) {
+    console.log('切换到页面:', pageId);
+    
+    // 移除所有按钮的active类
+    pageButtons.forEach(function(btn) {
+      btn.classList.remove('active');
+    });
+    
+    // 为当前按钮添加active类
+    const activeButton = document.querySelector('.page-btn[href="#' + pageId + '"]');
+    if (activeButton) {
+      activeButton.classList.add('active');
+    }
+    
+    // 隐藏所有页面
+    pageContents.forEach(function(page) {
+      page.style.display = 'none';
+    });
+    
+    // 显示目标页面
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+      targetPage.style.display = 'block';
+      console.log('显示页面成功:', pageId);
+    } else {
+      console.error('找不到页面元素:', pageId);
+    }
   }
-  
-  if (pages.length === 0) {
-    console.error('未找到页面内容');
-    return;
-  }
-  
-  console.log('找到按钮:', buttons.length, '找到页面:', pages.length);
   
   // 为每个按钮添加点击事件
-  buttons.forEach(function(button) {
-    button.addEventListener('click', function() {
-      const targetId = this.getAttribute('data-target');
-      console.log('点击按钮，目标:', targetId);
+  pageButtons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      console.log('按钮被点击:', this.textContent, this.getAttribute('href'));
       
-      // 更新按钮状态
-      buttons.forEach(function(btn) {
-        btn.classList.remove('active');
-      });
-      this.classList.add('active');
+      // 允许URL哈希变化，但阻止默认跳转行为
+      event.preventDefault();
       
-      // 切换页面显示
-      pages.forEach(function(page) {
-        if (page.id === targetId) {
-          console.log('显示页面:', page.id);
-          page.style.display = 'block';
-        } else {
-          page.style.display = 'none';
-        }
-      });
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const pageId = href.substring(1);
+        switchToPage(pageId);
+        
+        // 手动更新URL哈希
+        window.location.hash = pageId;
+        console.log('URL哈希更新为:', pageId);
+      }
     });
   });
-}
-
-// 页面加载完成后初始化
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializePageSwitcher);
-} else {
-  initializePageSwitcher();
-}
+  
+  // 监听URL哈希变化
+  window.addEventListener('hashchange', function() {
+    console.log('URL哈希变化:', window.location.hash);
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      switchToPage(hash);
+    }
+  });
+  
+  // 初始加载时检查URL哈希
+  const initialHash = window.location.hash.substring(1);
+  if (initialHash && (initialHash === 'page2' || initialHash === 'page3')) {
+    console.log('初始哈希:', initialHash);
+    switchToPage(initialHash);
+  }
+  
+  // 调试：为页面添加边框便于查看
+  pageContents.forEach(function(page, index) {
+    console.log('页面', index + 1, 'ID:', page.id, '显示状态:', window.getComputedStyle(page).display);
+  });
+});
 `}</script>
