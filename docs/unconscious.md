@@ -15,11 +15,11 @@ title: 无意识文档库
   <!-- 第1页：15个文档卡片 (3×5布局) -->
   <div class="page active" id="page-1">
     <div class="doc-grid">
-      <a href="/docs/unconscious/doc-1" class="doc-card">
+      <a href="/docs/unconscious/doc1" class="doc-card">
         <h3>文档标题 1</h3>
         <p>文档描述或简介内容</p>
       </a>
-      <a href="/docs/unconscious/doc-2" class="doc-card">
+<!--      <a href="/docs/unconscious/doc-2" class="doc-card">
         <h3>文档标题 2</h3>
         <p>文档描述或简介内容</p>
       </a>
@@ -75,14 +75,15 @@ title: 无意识文档库
         <h3>文档标题 15</h3>
         <p>文档描述或简介内容</p>
       </a>
+      -->
     </div>
   </div>
 
-  <!-- 第2页 -->
+<!-- 第2页 -->
   <div class="page" id="page-2">
     <div class="doc-grid">
       <!-- 这里放第16-30个文档卡片 -->
-      <a href="/docs/unconscious/doc-16" class="doc-card">
+      <a href="/docs/unconscious" class="doc-card">
         <h3>文档标题 16</h3>
         <p>文档描述或简介内容</p>
       </a>
@@ -94,13 +95,13 @@ title: 无意识文档库
   <div class="page" id="page-3">
     <div class="doc-grid">
       <!-- 这里放第31-45个文档卡片 -->
-      <a href="/docs/unconscious/doc-31" class="doc-card">
+      <a href="/docs/unconscious" class="doc-card">
         <h3>文档标题 31</h3>
         <p>文档描述或简介内容</p>
       </a>
       <!-- 继续添加... -->
     </div>
-  </div>
+  </div> 
 </div>
 
 <div class="nav-links">
