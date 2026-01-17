@@ -109,27 +109,31 @@ title: 无意识文档库
 </div>
 
 <script>
-// 分页功能
+// 分页功能 - 修复版
 document.addEventListener('DOMContentLoaded', function() {
-  const pageButtons = document.querySelectorAll('.page-btn');
-  const pages = document.querySelectorAll('.page');
+  var pageButtons = document.querySelectorAll('.page-btn');
+  var pages = document.querySelectorAll('.page');
   
-  pageButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const pageId = this.getAttribute('data-page');
+  for (var i = 0; i < pageButtons.length; i++) {
+    pageButtons[i].addEventListener('click', function() {
+      var pageId = this.getAttribute('data-page');
       
       // 更新按钮状态
-      pageButtons.forEach(btn => btn.classList.remove('active'));
+      for (var j = 0; j < pageButtons.length; j++) {
+        pageButtons[j].classList.remove('active');
+      }
       this.classList.add('active');
       
       // 显示对应页面
-      pages.forEach(page => page.classList.remove('active'));
-      document.getElementById(`page-${pageId}`).classList.add('active');
+      for (var j = 0; j < pages.length; j++) {
+        pages[j].classList.remove('active');
+      }
+      document.getElementById('page-' + pageId).classList.add('active');
       
       // 滚动到顶部
       window.scrollTo({top: 0, behavior: 'smooth'});
     });
-  });
+  }
 });
 </script>
 
