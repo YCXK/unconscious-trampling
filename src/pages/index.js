@@ -26,27 +26,27 @@ export default function Home() {
       <main className={styles.main}>
         <div className="container">
           <div className={styles.categories}>
-            {/* 无意识分类 */}
-            <Link to="/docs/unconscious.md" className={styles.categoryCard}>
+            {/* 无意识分类 - 先链接到实际存在的页面 */}
+            <Link to="/docs/unconscious" className={styles.categoryCard}>
               <div className={styles.categoryContent}>
                 <h3>无意识</h3>
-                <p>点击进入无意识文档</p>
+                <p>查看无意识相关文档</p>
               </div>
             </Link>
             
             {/* GTS分类 */}
-            <Link to="/docs/gts.md" className={styles.categoryCard}>
+            <Link to="/docs/gts" className={styles.categoryCard}>
               <div className={styles.categoryContent}>
                 <h3>GTS</h3>
-                <p>点击进入GTS文档</p>
+                <p>查看GTS相关文档</p>
               </div>
             </Link>
             
             {/* 其余分类 */}
-            <Link to="/docs/others.md" className={styles.categoryCard}>
+            <Link to="/docs/others" className={styles.categoryCard}>
               <div className={styles.categoryContent}>
                 <h3>其余分类</h3>
-                <p>点击进入其他文档</p>
+                <p>查看其他文档</p>
               </div>
             </Link>
           </div>
