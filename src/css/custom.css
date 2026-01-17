@@ -1,26 +1,18 @@
-/* 确保整个页面使用统一背景 */
-html, body {
-  background: linear-gradient(180deg, #f0f2f5 0%, #ffffff 100%) !important;
+/* 强制设置整个网站的灰白渐变背景 */
+html, body, #__docusaurus {
   margin: 0 !important;
   padding: 0 !important;
-  min-height: 100vh;
+  min-height: 100vh !important;
+  background: linear-gradient(180deg, #e9ecef 0%, #ffffff 100%) !important;
+  background-attachment: fixed !important;
 }
 
-/* 移除所有可能的背景色 */
-.navbar,
-.footer {
+/* 确保导航栏和页脚透明，不阻挡背景 */
+.navbar, .footer {
   background-color: transparent !important;
 }
 
-/* 确保主内容区域透明 */
-main {
+/* 移除任何可能覆盖主背景的容器背景色 */
+.main-wrapper, .container, main {
   background: transparent !important;
-}
-
-/* 如果有容器有白色背景，强制改为透明 */
-.container,
-.main-wrapper {
-  background: transparent !important;
-  padding: 0 !important;
-  margin: 0 auto !important;
 }
