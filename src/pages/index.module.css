@@ -2,9 +2,7 @@
 .heroBanner {
   padding: 4rem 1rem;
   text-align: center;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: var(--ifm-color-primary-lightest);
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
@@ -15,214 +13,72 @@
 
 .heroTitle {
   font-size: 3rem;
-  font-weight: 700;
   margin-bottom: 0.5rem;
-  color: var(--ifm-color-primary);
 }
 
 .heroSubtitle {
   font-size: 1.5rem;
   color: var(--ifm-color-emphasis-700);
-  margin-bottom: 2rem;
 }
 
-/* 搜索区域 */
-.searchContainer {
-  margin: 2rem auto;
-  max-width: 600px;
-}
-
-.searchBox {
-  background: white;
-  border-radius: 12px;
-  padding: 0.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  border: 2px solid var(--ifm-color-primary-lightest);
-}
-
-.searchBox :global(.navbar__search) {
-  width: 100%;
-  margin: 0;
-}
-
-.searchBox :global(.navbar__search-input) {
-  border: none;
-  box-shadow: none;
-  background: transparent;
-}
-
-.searchHint {
-  color: var(--ifm-color-emphasis-600);
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-}
-
-/* 分类区域 */
-.categoriesSection {
+/* 主内容区域 */
+.main {
   padding: 4rem 1rem;
-  background: white;
 }
 
-.sectionHeader {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.sectionHeader h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.sectionHeader p {
-  color: var(--ifm-color-emphasis-600);
-}
-
-.categoriesGrid {
+/* 分类布局 */
+.categories {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 /* 分类卡片 */
 .categoryCard {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  transition: all 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.categoryCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  border-color: var(--ifm-color-primary-light);
-}
-
-.categoryHeader {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.categoryIcon {
-  font-size: 2rem;
-}
-
-.categoryHeader h3 {
-  margin: 0;
-  font-size: 1.25rem;
-}
-
-.categoryDescription {
-  color: var(--ifm-color-emphasis-600);
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
-}
-
-.categoryList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.categoryList li {
-  margin-bottom: 0.5rem;
-}
-
-.categoryLink {
-  color: var(--ifm-color-emphasis-700);
-  text-decoration: none;
-  padding: 0.25rem 0;
   display: block;
-  transition: color 0.2s ease;
-}
-
-.categoryLink:hover {
-  color: var(--ifm-color-primary);
-  text-decoration: none;
-}
-
-/* 更新区域 */
-.updatesSection {
-  padding: 4rem 1rem;
-  background: var(--ifm-color-emphasis-50);
-  border-top: 1px solid var(--ifm-color-emphasis-200);
-}
-
-.updatesList {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.updateCard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem;
+  padding: 2rem;
   background: white;
   border-radius: 8px;
-  margin-bottom: 1rem;
   border: 1px solid var(--ifm-color-emphasis-200);
   text-decoration: none;
   color: inherit;
   transition: all 0.2s ease;
 }
 
-.updateCard:hover {
-  background: var(--ifm-color-emphasis-100);
-  border-color: var(--ifm-color-primary-light);
+.categoryCard:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-decoration: none;
 }
 
-.updateCard h3 {
-  margin: 0 0 0.25rem 0;
-  font-size: 1rem;
-}
-
-.updateDate {
-  color: var(--ifm-color-emphasis-600);
-  font-size: 0.875rem;
-}
-
-.updateArrow {
-  color: var(--ifm-color-emphasis-400);
-  font-size: 1.25rem;
-}
-
-/* 底部提示 */
-.bottomTips {
-  padding: 2rem 1rem;
+.categoryContent {
   text-align: center;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
-  background: white;
 }
 
-.bottomTips p {
+.categoryContent h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-primary);
+}
+
+.categoryContent p {
   color: var(--ifm-color-emphasis-600);
+  margin: 0;
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .categories {
+    grid-template-columns: 1fr;
+  }
+  
   .heroTitle {
     font-size: 2rem;
   }
   
   .heroSubtitle {
     font-size: 1.25rem;
-  }
-  
-  .categoriesGrid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .categoryCard {
-    padding: 1.25rem;
   }
 }
