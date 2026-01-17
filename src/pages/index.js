@@ -1,19 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
-
-// 强制设置页面背景 - 拥有最高优先级
-import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
-
-if (ExecutionEnvironment.canUseDOM) {
-  // 直接修改body的样式
-  document.body.style.background = 'linear-gradient(180deg, #e9ecef 0%, #ffffff 100%)';
-  document.body.style.backgroundAttachment = 'fixed';
-  document.body.style.minHeight = '100vh';
-  document.body.style.margin = '0';
-}
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -31,13 +20,38 @@ function HomepageHeader() {
 }
 
 export default function Home() {
+  useEffect(() => {
+    // 最直接的解决方案：创建独立背景层
+    const bgDiv = document.createElement('div');
+    bgDiv.id = 'custom-bg-layer';
+    bgDiv.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(180deg, #e9ecef 0%, #ffffff 100%);
+      z-index: -9999;
+      pointer-events: none;
+    `;
+    
+    document.body.appendChild(bgDiv);
+    
+    // 清理函数
+    return () => {
+      const existingBg = document.getElementById('custom-bg-layer');
+      if (existingBg && existingBg.parentNode) {
+        existingBg.parentNode.removeChild(existingBg);
+      }
+    };
+  }, []);
+
   return (
     <Layout title="首页">
       <HomepageHeader />
       <main className={styles.main}>
         <div className="container">
           <div className={styles.categories}>
-            {/* 无意识分类 - 链接到 /unconscious */}
             <Link to="/unconscious" className={styles.categoryCard}>
               <div className={styles.categoryContent}>
                 <h3>无意识</h3>
@@ -45,7 +59,6 @@ export default function Home() {
               </div>
             </Link>
             
-            {/* GTS分类 - 链接到 /gts */}
             <Link to="/gts" className={styles.categoryCard}>
               <div className={styles.categoryContent}>
                 <h3>GTS</h3>
@@ -53,7 +66,6 @@ export default function Home() {
               </div>
             </Link>
             
-            {/* 其余分类 - 链接到 /others */}
             <Link to="/others" className={styles.categoryCard}>
               <div className={styles.categoryContent}>
                 <h3>其余分类</h3>
