@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>登录 - 你的作品集</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacOSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      display: grid;
+      place-items: center;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 3rem 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease;
+    }
+
+    .login-container:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    .form-group {
+      margin-bottom: 1.6rem;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.9rem 1.1rem;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.18);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 1rem;
+      margin-top: 1.2rem;
+      background: linear-gradient(90deg, #89f7fe, #66a6ff);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 166, 255, 0.4);
+    }
+
+    .options {
+      margin-top: 1.8rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .options a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .options a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .divider {
+      margin: 1.8rem 0;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h1>欢迎回来</h1>
+
+    <form>
+      <div class="form-group">
+        <label for="email">邮箱 / 用户名</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="example@domain.com" 
+          required 
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">密码</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="••••••••" 
+          required 
+          autocomplete="current-password"
+        />
+      </div>
+
+      <button type="submit" class="btn">登录</button>
+    </form>
+
+    <div class="options">
+      <a href="#">忘记密码？</a>
+      <span style="margin: 0 1rem; color: rgba(255,255,255,0.4);">•</span>
+      <a href="#">创建新账号</a>
+    </div>
+
+    <div class="divider">或使用第三方登录</div>
+
+    <!-- 这里可以放 GitHub/Google 等按钮，样式可继续复用 -->
+  </div>
+
+</body>
+</html>
