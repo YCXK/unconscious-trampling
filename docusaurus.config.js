@@ -84,7 +84,7 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'My Site',
+        title: '无意识',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -92,9 +92,9 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'docs',
             position: 'left',
-            label: 'Tutorial',
+            label: 'doc',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
