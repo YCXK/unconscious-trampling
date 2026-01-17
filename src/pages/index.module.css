@@ -1,46 +1,58 @@
-/* 全局背景 - 浅灰渐变白色 */
+/* 完全重置页面布局 */
+:global(html),
 :global(body) {
-  background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
-  min-height: 100vh;
   margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
-/* 英雄区域 - 去掉原有背景，使用透明 */
+:global(#__docusaurus) {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f0f2f5 0%, #ffffff 100%);
+}
+
+/* 英雄区域 - 完全融入背景 */
 .heroBanner {
-  padding: 6rem 1rem 2rem 1rem;
+  padding: 5rem 1rem 1rem 1rem;
   text-align: center;
-  background: transparent; /* 透明背景 */
+  background: transparent;
   position: relative;
+  min-height: 25vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 30vh;
+  margin: 0;
 }
 
 .heroContent {
   max-width: 800px;
   margin: 0 auto;
+  padding-top: 2rem;
 }
 
 .heroTitle {
   font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: #000000; /* 黑色标题 */
-  letter-spacing: -0.5px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: #000000;
+  letter-spacing: -1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .heroSubtitle {
   font-size: 1.5rem;
-  color: #333333; /* 深灰色副标题 */
+  color: #444444;
   margin-bottom: 3rem;
   font-weight: 400;
+  opacity: 0.9;
 }
 
-/* 主内容区域 */
+/* 主内容区域 - 消除所有白边 */
 .main {
-  padding: 0 1rem 4rem 1rem;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
   position: relative;
 }
 
@@ -49,87 +61,104 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  max-width: 1200px;
+  padding: 0 2rem;
   margin: 0 auto;
-  padding: 0 1rem;
 }
 
-/* 分类卡片 - 墨蓝色 */
+/* 分类卡片 - 优化墨蓝色 */
 .categoryCard {
   display: block;
   padding: 2.5rem 2rem;
-  background: linear-gradient(145deg, #1e3a8a, #1e40af); /* 墨蓝色渐变 */
-  border-radius: 16px;
+  background: linear-gradient(145deg, #1a365d, #2d3748); /* 更深的墨蓝色 */
+  border-radius: 20px;
   text-decoration: none;
   color: #ffffff;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-align: center;
   box-shadow: 
-    0 4px 20px rgba(30, 58, 138, 0.2),
-    0 8px 30px rgba(0, 0, 0, 0.1);
+    0 10px 30px rgba(26, 54, 93, 0.25),
+    0 15px 40px rgba(0, 0, 0, 0.1);
   height: 100%;
-  min-height: 200px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
   position: relative;
   overflow: hidden;
+  z-index: 1;
+}
+
+/* 卡片内发光效果 */
+.categoryCard::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.categoryCard:hover::after {
+  opacity: 1;
 }
 
 /* 卡片悬停效果 */
 .categoryCard:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px) scale(1.02);
   box-shadow: 
-    0 12px 40px rgba(30, 58, 138, 0.3),
-    0 15px 35px rgba(0, 0, 0, 0.15);
-  text-decoration: none;
-}
-
-/* 卡片光泽效果 */
-.categoryCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: left 0.6s;
-}
-
-.categoryCard:hover::before {
-  left: 100%;
+    0 20px 50px rgba(26, 54, 93, 0.35),
+    0 25px 60px rgba(0, 0, 0, 0.2);
 }
 
 .categoryContent h3 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
-  color: #ffffff; /* 卡片内标题白色 */
-  font-weight: 600;
+  color: #ffffff;
+  font-weight: 700;
   position: relative;
-  z-index: 1;
 }
 
 .categoryContent p {
-  color: rgba(255, 255, 255, 0.9); /* 卡片内文字浅白色 */
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
   font-size: 1.1rem;
   line-height: 1.6;
-  position: relative;
-  z-index: 1;
+  font-weight: 400;
+}
+
+/* 全局容器调整，消除白边 */
+:global(.container) {
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+/* 布局容器 */
+:global(.main-wrapper) {
+  padding: 0;
+  margin: 0;
+  background: transparent;
 }
 
 /* 响应式设计 */
+@media (max-width: 1200px) {
+  .categories {
+    padding: 0 1.5rem;
+  }
+}
+
 @media (max-width: 992px) {
   .heroBanner {
-    padding: 5rem 1rem 1.5rem 1rem;
-    min-height: 25vh;
+    padding: 4rem 1rem 1rem 1rem;
+    min-height: 22vh;
   }
   
   .heroTitle {
@@ -138,18 +167,18 @@
   
   .categories {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1.75rem;
+    padding: 0 1.5rem;
   }
   
   .categoryCard {
-    padding: 2rem 1.5rem;
-    min-height: 180px;
+    min-height: 200px;
   }
 }
 
 @media (max-width: 768px) {
   .heroBanner {
-    padding: 4rem 1rem 1rem 1rem;
+    padding: 3.5rem 1rem 1rem 1rem;
   }
   
   .heroTitle {
@@ -157,27 +186,25 @@
   }
   
   .heroSubtitle {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-  }
-  
-  .main {
-    padding: 0 0.5rem 3rem 0.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
   }
   
   .categories {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-    max-width: 400px;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    max-width: 500px;
+    margin: 0 auto;
   }
   
   .categoryCard {
-    padding: 2rem 1.5rem;
-    min-height: 170px;
+    padding: 2.5rem 2rem;
+    min-height: 190px;
   }
   
   .categoryContent h3 {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -187,21 +214,26 @@
   }
   
   .heroTitle {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
   .heroSubtitle {
     font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .categories {
+    padding: 0 0.75rem;
   }
   
   .categoryCard {
-    padding: 1.75rem 1.25rem;
-    min-height: 160px;
+    padding: 2rem 1.5rem;
+    min-height: 180px;
+    border-radius: 16px;
   }
   
   .categoryContent h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   
   .categoryContent p {
