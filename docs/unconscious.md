@@ -5,10 +5,10 @@ title: 无意识文档库
 # 📚 无意识文档库
 
 <!-- 分页导航 - 纯HTML实现 -->
-<div class="pagination">
-  <a href="javascript:void(0)" onclick="showPage(1)" class="page-btn active">第 1 页</a>
-  <a href="javascript:void(0)" onclick="showPage(2)" class="page-btn">第 2 页</a>
-  <a href="javascript:void(0)" onclick="showPage(3)" class="page-btn">第 3 页</a>
+<div class="pagination" id="pagination">
+  <a href="#" data-page="1" class="page-btn active">第 1 页</a>
+  <a href="#" data-page="2" class="page-btn">第 2 页</a>
+  <a href="#" data-page="3" class="page-btn">第 3 页</a>
 </div>
 
 <!-- 第1页 - 15个文档卡片 -->
@@ -179,30 +179,45 @@ title: 无意识文档库
 </style>
 
 <script>
-{`
-// 这是必须的，放在文件最后
+// 页面切换函数
 function showPage(pageNum) {
   // 移除所有active状态
-  document.querySelectorAll('.page-btn').forEach(btn => {
+  document.querySelectorAll('.page-btn').forEach(function(btn) {
     btn.classList.remove('active');
   });
   
   // 隐藏所有页面
-  document.querySelectorAll('.page-content').forEach(page => {
+  document.querySelectorAll('.page-content').forEach(function(page) {
     page.style.display = 'none';
   });
   
   // 显示对应页面
-  document.getElementById('page-' + pageNum).style.display = 'block';
+  var pageElement = document.getElementById('page-' + pageNum);
+  if (pageElement) {
+    pageElement.style.display = 'block';
+  }
   
   // 设置对应按钮为active
-  const buttons = document.querySelectorAll('.page-btn');
-  for (let i = 0; i < buttons.length; i++) {
-    if (buttons[i].textContent.includes(`第 \${pageNum} 页`)) {
+  var buttons = document.querySelectorAll('.page-btn');
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].getAttribute('data-page') === String(pageNum)) {
       buttons[i].classList.add('active');
       break;
     }
   }
 }
-`}
+
+// 事件监听器
+document.addEventListener('DOMContentLoaded', function() {
+  var pagination = document.getElementById('pagination');
+  if (pagination) {
+    pagination.addEventListener('click', function(event) {
+      event.preventDefault();
+      if (event.target.classList.contains('page-btn')) {
+        var pageNum = event.target.getAttribute('data-page');
+        showPage(pageNum);
+      }
+    });
+  }
+});
 </script>
