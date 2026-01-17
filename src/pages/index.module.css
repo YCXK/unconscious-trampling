@@ -1,105 +1,171 @@
-/* 英雄区域 - 调整高度和位置 */
+/* 重置和基础样式 */
+:global(:root) {
+  --card-spacing: 2rem;
+}
+
+/* 英雄区域 - 让标题更高 */
 .heroBanner {
-  padding: 6rem 1rem 4rem 1rem; /* 增加上内边距 */
+  padding: 8rem 1rem 1rem 1rem; /* 增加上内边距 */
   text-align: center;
-  background: var(--ifm-color-primary-lightest);
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
-  min-height: 50vh; /* 控制整体高度 */
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-bottom: 1px solid #dee2e6;
+  position: relative;
+  min-height: 40vh; /* 减小高度 */
   display: flex;
-  align-items: center; /* 垂直居中 */
-  justify-content: center; /* 水平居中 */
+  align-items: flex-start; /* 顶部对齐 */
+  justify-content: center;
 }
 
 .heroContent {
   max-width: 800px;
   margin: 0 auto;
-  transform: translateY(-25%); /* 上移25% */
+  padding-top: 2rem; /* 标题向下移动一点 */
 }
 
 .heroTitle {
   font-size: 3.5rem;
-  margin-bottom: 1rem;
-  color: var(--ifm-color-primary);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  letter-spacing: -0.5px;
 }
 
 .heroSubtitle {
   font-size: 1.5rem;
-  color: var(--ifm-color-emphasis-700);
+  color: #6c757d;
   margin-bottom: 0;
+  font-weight: 400;
 }
 
-/* 主内容区域 - 卡片区域 */
+/* 主内容区域 - 让卡片更靠近标题 */
 .main {
-  padding: 2rem 1rem;
-  margin-top: -100px; /* 让卡片上移，靠近标题 */
+  padding: 0 1rem 3rem 1rem; /* 减少上内边距 */
+  margin-top: -50px; /* 负外边距让卡片上移 */
+  position: relative;
+  z-index: 1;
 }
 
+/* 分类容器 */
 .categories {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
+  grid-template-columns: repeat(3, 1fr); /* 固定三列 */
+  gap: 1.5rem; /* 减小间距 */
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* 分类卡片 */
 .categoryCard {
   display: block;
-  padding: 2.5rem;
+  padding: 2rem 1.5rem;
   background: white;
   border-radius: 12px;
-  border: 2px solid var(--ifm-color-emphasis-200);
+  border: 1px solid #e0e0e0;
   text-decoration: none;
   color: inherit;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .categoryCard:hover {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  transform: translateY(-5px);
+  border-color: #4dabf7;
+  box-shadow: 0 8px 25px rgba(77, 171, 247, 0.15);
+  transform: translateY(-4px);
   text-decoration: none;
 }
 
+.categoryCard:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(77, 171, 247, 0.1);
+}
+
 .categoryContent h3 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 0.75rem;
-  color: var(--ifm-color-primary);
+  color: #2c3e50;
+  font-weight: 600;
 }
 
 .categoryContent p {
-  color: var(--ifm-color-emphasis-600);
+  color: #6c757d;
   margin: 0;
   font-size: 1rem;
+  line-height: 1.5;
 }
 
 /* 响应式设计 */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .heroBanner {
-    padding: 4rem 1rem 3rem 1rem;
-    min-height: 40vh;
-  }
-  
-  .heroContent {
-    transform: translateY(-15%);
+    padding: 6rem 1rem 1rem 1rem;
+    min-height: 35vh;
   }
   
   .heroTitle {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+  }
+  
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroBanner {
+    padding: 5rem 1rem 1rem 1rem;
+    min-height: 30vh;
+  }
+  
+  .heroTitle {
+    font-size: 2.2rem;
   }
   
   .heroSubtitle {
     font-size: 1.25rem;
   }
   
+  .main {
+    margin-top: -30px;
+    padding: 0 0.5rem 2rem 0.5rem;
+  }
+  
   .categories {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
+    max-width: 400px;
   }
   
   .categoryCard {
-    padding: 2rem;
+    padding: 1.75rem 1.25rem;
+    min-height: 160px;
+  }
+  
+  .categoryContent h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroBanner {
+    padding: 4rem 1rem 1rem 1rem;
+  }
+  
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+  
+  .categoryCard {
+    padding: 1.5rem 1rem;
   }
 }
