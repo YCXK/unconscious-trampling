@@ -258,6 +258,15 @@ title: 无意识文档库
   font-weight: 500;
 }
 
+/* 当其他单选框选中时，移除第一页的active类效果 */
+#page2-radio:checked ~ .pagination label[for="page1-radio"],
+#page3-radio:checked ~ .pagination label[for="page1-radio"] {
+  background: #f8f9fa;
+  color: #495057;
+  border-color: #dee2e6;
+  font-weight: normal;
+}
+
 /* 文档网格 */
 .doc-grid {
   display: grid;
@@ -307,17 +316,26 @@ title: 无意识文档库
   display: none;
 }
 
+/* 默认显示第一页 */
+.page-1 {
+  display: block;
+}
+
 /* 使用 :checked 选择器控制页面显示 */
-#page1-radio:checked ~ .page-1 {
-  display: block;
-}
-
-#page2-radio:checked ~ .page-2 {
-  display: block;
-}
-
+#page1-radio:checked ~ .page-1,
+#page2-radio:checked ~ .page-2,
 #page3-radio:checked ~ .page-3 {
   display: block;
+}
+
+/* 当一个页面显示时，隐藏其他页面 */
+#page1-radio:checked ~ .page-2,
+#page1-radio:checked ~ .page-3,
+#page2-radio:checked ~ .page-1,
+#page2-radio:checked ~ .page-3,
+#page3-radio:checked ~ .page-1,
+#page3-radio:checked ~ .page-2 {
+  display: none;
 }
 
 /* 返回首页 */
