@@ -14,21 +14,66 @@ title: 无意识文档库
 <!-- 第1页 - 默认显示 -->
 <div id="page1" className="page-content">
   <div className="doc-grid">
-    <!-- 第1页的15个文档卡片 -->
+    <a href="/unconscious/doc1" className="doc-card">
+      <h3>文档 1</h3>
+      <p>第1页的第一个文档</p>
+    </a>
+    <a href="/unconscious/doc2" className="doc-card">
+      <h3>文档 2</h3>
+      <p>第1页的第二个文档</p>
+    </a>
+    <a href="/unconscious/doc3" className="doc-card">
+      <h3>文档 3</h3>
+      <p>第1页的第三个文档</p>
+    </a>
+    <div className="doc-card placeholder">
+      <h3>文档 4-15</h3>
+      <p>第1页的其他文档...</p>
+    </div>
   </div>
 </div>
 
-<!-- 第2页 - 隐藏，通过CSS :target 选择器显示 -->
+<!-- 第2页 -->
 <div id="page2" className="page-content">
   <div className="doc-grid">
-    <!-- 第2页的15个文档卡片 -->
+    <a href="/unconscious/doc16" className="doc-card">
+      <h3>文档 16</h3>
+      <p>第2页的第一个文档</p>
+    </a>
+    <a href="/unconscious/doc17" className="doc-card">
+      <h3>文档 17</h3>
+      <p>第2页的第二个文档</p>
+    </a>
+    <a href="/unconscious/doc18" className="doc-card">
+      <h3>文档 18</h3>
+      <p>第2页的第三个文档</p>
+    </a>
+    <div className="doc-card placeholder">
+      <h3>文档 19-30</h3>
+      <p>第2页的其他文档...</p>
+    </div>
   </div>
 </div>
 
-<!-- 第3页 - 隐藏，通过CSS :target 选择器显示 -->
+<!-- 第3页 -->
 <div id="page3" className="page-content">
   <div className="doc-grid">
-    <!-- 第3页的15个文档卡片 -->
+    <a href="/unconscious/doc31" className="doc-card">
+      <h3>文档 31</h3>
+      <p>第3页的第一个文档</p>
+    </a>
+    <a href="/unconscious/doc32" className="doc-card">
+      <h3>文档 32</h3>
+      <p>第3页的第二个文档</p>
+    </a>
+    <a href="/unconscious/doc33" className="doc-card">
+      <h3>文档 33</h3>
+      <p>第3页的第三个文档</p>
+    </a>
+    <div className="doc-card placeholder">
+      <h3>文档 34-45</h3>
+      <p>第3页的其他文档...</p>
+    </div>
   </div>
 </div>
 
@@ -102,6 +147,13 @@ title: 无意识文档库
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px);
   text-decoration: none;
+}
+
+.doc-card.placeholder {
+  background: #f8f9fa;
+  border-style: dashed;
+  border-color: #ced4da;
+  opacity: 0.8;
 }
 
 .doc-card h3 {
