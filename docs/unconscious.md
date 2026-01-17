@@ -108,7 +108,6 @@ title: 无意识文档库
 </div>
 
 <script>
-// 分页功能 - 修复版
 document.addEventListener('DOMContentLoaded', function() {
   var pageButtons = document.querySelectorAll('.page-btn');
   var pages = document.querySelectorAll('.page');
@@ -118,22 +117,22 @@ document.addEventListener('DOMContentLoaded', function() {
       var pageId = this.getAttribute('data-page');
       
       // 更新按钮状态
-      for (var j = 0; j < pageButtons.length; j++) {
-        pageButtons[j].classList.remove('active');
+      for (var btnIndex = 0; btnIndex < pageButtons.length; btnIndex++) {
+        pageButtons[btnIndex].classList.remove('active');
       }
       this.classList.add('active');
       
       // 显示对应页面
-      for (var j = 0; j < pages.length; j++) {
-        pages[j].classList.remove('active');
+      for (var pageIndex = 0; pageIndex < pages.length; pageIndex++) {
+        pages[pageIndex].classList.remove('active');
       }
       document.getElementById('page-' + pageId).classList.add('active');
       
       // 滚动到顶部
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      window.scrollTo(0, 0);
     });
   }
-});
+});  // <-- 这个 }); 闭合了 DOMContentLoaded 函数
 </script>
 
 <style>
