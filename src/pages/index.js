@@ -4,6 +4,17 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 
+// 强制设置页面背景 - 拥有最高优先级
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+
+if (ExecutionEnvironment.canUseDOM) {
+  // 直接修改body的样式
+  document.body.style.background = 'linear-gradient(180deg, #e9ecef 0%, #ffffff 100%)';
+  document.body.style.backgroundAttachment = 'fixed';
+  document.body.style.minHeight = '100vh';
+  document.body.style.margin = '0';
+}
+
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   
