@@ -4,137 +4,54 @@ title: 无意识文档库
 
 # 📚 无意识文档库
 
-<div class="pagination-controls">
-  <button class="page-btn active" data-page="1">第 1 页</button>
-  <button class="page-btn" data-page="2">第 2 页</button>
-  <button class="page-btn" data-page="3">第 3 页</button>
-  <!-- 添加更多分页按钮 -->
+<!-- 分页导航 - 纯HTML实现 -->
+<div class="pagination" id="pagination">
+  <a href="#" data-page="1" class="page-btn active">第 1 页</a>
+  <a href="#" data-page="2" class="page-btn">第 2 页</a>
+  <a href="#" data-page="3" class="page-btn">第 3 页</a>
 </div>
 
-<div class="docs-container">
-  <!-- 第1页：15个文档卡片 (3×5布局) -->
-  <div class="page active" id="page-1">
-    <div class="doc-grid">
-      <a href="/docs/unconscious/doc-1" class="doc-card">
-        <h3>文档标题 1</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-2" class="doc-card">
-        <h3>文档标题 2</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-3" class="doc-card">
-        <h3>文档标题 3</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-4" class="doc-card">
-        <h3>文档标题 4</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-5" class="doc-card">
-        <h3>文档标题 5</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-6" class="doc-card">
-        <h3>文档标题 6</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-7" class="doc-card">
-        <h3>文档标题 7</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-8" class="doc-card">
-        <h3>文档标题 8</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-9" class="doc-card">
-        <h3>文档标题 9</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-10" class="doc-card">
-        <h3>文档标题 10</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-11" class="doc-card">
-        <h3>文档标题 11</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-12" class="doc-card">
-        <h3>文档标题 12</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-13" class="doc-card">
-        <h3>文档标题 13</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-14" class="doc-card">
-        <h3>文档标题 14</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <a href="/docs/unconscious/doc-15" class="doc-card">
-        <h3>文档标题 15</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-    </div>
-  </div>
-
-  <!-- 第2页 -->
-  <div class="page" id="page-2">
-    <div class="doc-grid">
-      <!-- 这里放第16-30个文档卡片 -->
-      <a href="/docs/unconscious/doc-16" class="doc-card">
-        <h3>文档标题 16</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <!-- 继续添加直到第30个... -->
-    </div>
-  </div>
-
-  <!-- 第3页 -->
-  <div class="page" id="page-3">
-    <div class="doc-grid">
-      <!-- 这里放第31-45个文档卡片 -->
-      <a href="/docs/unconscious/doc-31" class="doc-card">
-        <h3>文档标题 31</h3>
-        <p>文档描述或简介内容</p>
-      </a>
-      <!-- 继续添加... -->
-    </div>
+<!-- 第1页 - 15个文档卡片 -->
+<div class="page-content" id="page-1">
+  <div class="doc-grid">
+    <a href="/unconscious/doc1" class="doc-card">
+      <h3>文档 1</h3>
+      <p>文档1的简要描述内容</p>
+    </a>
+    <!-- 只保留第一个卡片示例，其他14个类似 -->
   </div>
 </div>
 
-<div class="nav-links">
-  [返回首页](/)
+<!-- 第2页 - 隐藏状态 -->
+<div class="page-content" id="page-2" style="display: none;">
+  <div class="doc-grid">
+    <a href="/unconscious/doc16" class="doc-card">
+      <h3>文档 16</h3>
+      <p>文档16的简要描述内容</p>
+    </a>
+    <!-- 其他卡片 -->
+  </div>
 </div>
 
-<script>
-// 分页功能
-document.addEventListener('DOMContentLoaded', function() {
-  const pageButtons = document.querySelectorAll('.page-btn');
-  const pages = document.querySelectorAll('.page');
-  
-  pageButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const pageId = this.getAttribute('data-page');
-      
-      // 更新按钮状态
-      pageButtons.forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
-      
-      // 显示对应页面
-      pages.forEach(page => page.classList.remove('active'));
-      document.getElementById(`page-${pageId}`).classList.add('active');
-      
-      // 滚动到顶部
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    });
-  });
-});
-</script>
+<!-- 第3页 - 隐藏状态 -->
+<div class="page-content" id="page-3" style="display: none;">
+  <div class="doc-grid">
+    <a href="/unconscious/doc31" class="doc-card">
+      <h3>文档 31</h3>
+      <p>文档31的简要描述内容</p>
+    </a>
+    <!-- 其他卡片 -->
+  </div>
+</div>
+
+<!-- 返回首页 -->
+<div class="back-home">
+  <a href="/">返回首页</a>
+</div>
 
 <style>
-/* 分页控件样式 */
-.pagination-controls {
+/* 分页样式 */
+.pagination {
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -143,14 +60,16 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 .page-btn {
+  display: inline-block;
   padding: 8px 16px;
   background: #f8f9fa;
   border: 1px solid #dee2e6;
   border-radius: 6px;
-  cursor: pointer;
+  text-decoration: none;
   color: #495057;
   font-size: 0.95rem;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .page-btn:hover {
@@ -164,21 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
   border-color: #2d3748;
 }
 
-/* 文档网格布局 */
-.docs-container {
-  position: relative;
-  min-height: 800px;
-}
-
-.page {
-  display: none;
-  animation: fadeIn 0.3s ease;
-}
-
-.page.active {
-  display: block;
-}
-
+/* 文档网格 */
 .doc-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -186,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
   margin-bottom: 3rem;
 }
 
-/* 文档卡片样式 */
+/* 文档卡片 */
 .doc-card {
   display: block;
   background: white;
@@ -197,11 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
   border: 1px solid #e2e8f0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  height: 100%;
   min-height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .doc-card:hover {
@@ -226,28 +127,30 @@ document.addEventListener('DOMContentLoaded', function() {
   opacity: 0.9;
 }
 
-/* 导航链接 */
-.nav-links {
+/* 返回首页 */
+.back-home {
+  text-align: center;
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid #e2e8f0;
-  text-align: center;
 }
 
-.nav-links a {
+.back-home a {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: #f7fafc;
+  padding: 0.75rem 2rem;
+  background: #2d3748;
+  color: white;
   border-radius: 8px;
   text-decoration: none;
-  color: #4a5568;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #4a5568;
   transition: all 0.2s ease;
 }
 
-.nav-links a:hover {
-  background: #edf2f7;
+.back-home a:hover {
+  background: #4a5568;
   text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(45, 55, 72, 0.2);
 }
 
 /* 响应式设计 */
@@ -264,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
     gap: 18px;
   }
   
-  .pagination-controls {
+  .pagination {
     gap: 8px;
   }
   
@@ -273,9 +176,48 @@ document.addEventListener('DOMContentLoaded', function() {
     font-size: 0.9rem;
   }
 }
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 </style>
+
+<script>
+// 页面切换函数
+function showPage(pageNum) {
+  // 移除所有active状态
+  document.querySelectorAll('.page-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  
+  // 隐藏所有页面
+  document.querySelectorAll('.page-content').forEach(function(page) {
+    page.style.display = 'none';
+  });
+  
+  // 显示对应页面
+  var pageElement = document.getElementById('page-' + pageNum);
+  if (pageElement) {
+    pageElement.style.display = 'block';
+  }
+  
+  // 设置对应按钮为active
+  var buttons = document.querySelectorAll('.page-btn');
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].getAttribute('data-page') === String(pageNum)) {
+      buttons[i].classList.add('active');
+      break;
+    }
+  }
+}
+
+// 事件监听器
+document.addEventListener('DOMContentLoaded', function() {
+  var pagination = document.getElementById('pagination');
+  if (pagination) {
+    pagination.addEventListener('click', function(event) {
+      event.preventDefault();
+      if (event.target.classList.contains('page-btn')) {
+        var pageNum = event.target.getAttribute('data-page');
+        showPage(pageNum);
+      }
+    });
+  }
+});
+</script>
