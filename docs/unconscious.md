@@ -19,7 +19,7 @@ title: 无意识文档库
         <h3>文档标题 1</h3>
         <p>文档描述或简介内容</p>
       </a>
-<!--      <a href="/docs/unconscious/doc-2" class="doc-card">
+      <a href="/docs/unconscious/doc-2" class="doc-card">
         <h3>文档标题 2</h3>
         <p>文档描述或简介内容</p>
       </a>
@@ -75,7 +75,6 @@ title: 无意识文档库
         <h3>文档标题 15</h3>
         <p>文档描述或简介内容</p>
       </a>
-      -->
     </div>
   </div>
 
