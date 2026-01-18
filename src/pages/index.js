@@ -12,7 +12,7 @@ function HomepageHeader() {
       <div className="container">
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
-          <p className={styles.heroSubtitle}>文档中心</p>
+          <p className={styles.heroSubtitle}>Made by EASODCLUTSS</p>
         </div>
       </div>
     </header>
