@@ -9,7 +9,7 @@ hide_table_of_contents: true
 <div class="doc-nav top-nav">
   <a href="/unconscious/doc1" class="nav-link prev">
     <span class="nav-arrow">←</span>
-    <span class="nav-text">上一篇：文档1</span>
+    <span class="nav-text">上一篇：在小萝莉课桌下生活的一星期</span>
   </a>
 </div>
 
@@ -200,7 +200,7 @@ hide_table_of_contents: true
 <!-- 底部导航：下一篇 -->
 <div class="doc-nav bottom-nav">
   <a href="/unconscious/doc3" class="nav-link next">
-    <span class="nav-text">下一篇：文档3</span>
+    <span class="nav-text">下一篇：用隐身能力被无意识踩踏</span>
     <span class="nav-arrow">→</span>
   </a>
 </div>
