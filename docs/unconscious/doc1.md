@@ -4,11 +4,12 @@ description: No
 ---
 
 <!-- 顶部导航：这是第一篇 -->
-<div class="doc-nav">
+<div class="doc-nav top-nav">
   <span class="no-nav">这是第一篇文档，不可向前跳转</span>
 </div>
 
-# 内容简介
+# 在小萝莉课桌下生活的一星期
+
 魔都第二女子中学，是一所极为特殊的学校，以严格的规定著称。
 要进入这里的学生，都必须要求成绩优异，且相貌出众，是名副其实的贵族女校。
 这所学校有一个特色设计，那就是封闭式的课桌，学生坐下后，会上锁，一直持续到下课为止，锁才能打开，且离开后会再次上锁。
@@ -208,7 +209,7 @@ description: No
 鞋跟踩住蛋蛋的痛苦，与鞋子摩擦包皮撸动下产生的快感，我立刻发射了出去，可女孩发觉肉棒的颤动后，撸动的更来劲了，我也被迫的开始接着射精，这近乎榨精的方式，直接榨干了我的力气，再一次的，我晕倒在了女孩子的鞋底下面。
 
 <!-- 底部导航：下一篇 -->
-<div class="doc-nav next-nav">
+<div class="doc-nav bottom-nav">
   <a href="/unconscious/doc2" class="nav-link next">
     <span class="nav-text">下一篇：文档2</span>
     <span class="nav-arrow">→</span>
@@ -220,3 +221,89 @@ description: No
     返回文档库
   </a>
 </div>
+
+<style>{`
+/* 文档导航样式 */
+.doc-nav {
+  margin: 2rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.top-nav {
+  margin-top: 0;
+  border-top: none;
+}
+
+.bottom-nav {
+  margin-bottom: 3rem;
+}
+
+.no-nav {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #f8f9fa;
+  color: #6c757d;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.nav-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #2d3748;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nav-text {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.nav-arrow {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* 返回首页样式 */
+.back-home {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.home-link {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: #2d3748;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid #4a5568;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.home-link:hover {
+  background: #4a5568;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(45, 55, 72, 0.2);
+}
+`}</style>
