@@ -184,7 +184,7 @@ hide_table_of_contents: true
 
 <!-- 底部导航：下一篇 -->
 <div class="doc-nav bottom-nav">
-  <a href="/unconscious/doc2" class="nav-link next">
+  <a href="/others/doc2" class="nav-link next">
     <span class="nav-text">下一篇：小姐姐vpm鞋的无意识踩踏</span>
     <span class="nav-arrow">→</span>
   </a>
