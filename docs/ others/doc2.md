@@ -7,7 +7,7 @@ hide_table_of_contents: true
 
 <!-- 顶部导航：上一篇 -->
 <div class="doc-nav top-nav">
-  <a href="/unconscious/doc1" class="nav-link prev">
+  <a href="/others/doc1" class="nav-link prev">
     <span class="nav-arrow">←</span>
     <span class="nav-text">上一篇：养生会所杂物间里的无意识踩踏</span>
   </a>
@@ -273,7 +273,7 @@ vpm 的钉子狠狠的扎进土力，用力的扯住，所以一点也不会滑�
 
 <!-- 底部导航：下一篇 -->
 <div class="doc-nav bottom-nav">
-  <a href="/unconscious/doc3" class="nav-link next">
+  <a href="/others/doc3" class="nav-link next">
     <span class="nav-text">下一篇：无意识踩踏小说之黑灯楼道</span>
     <span class="nav-arrow">→</span>
   </a>
@@ -404,4 +404,5 @@ vpm 的钉子狠狠的扎进土力，用力的扯住，所以一点也不会滑�
   margin-bottom: 1rem;
   color: #4a5568;
 }
+
 `}</style>
