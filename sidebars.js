@@ -13,7 +13,7 @@ module.exports = {
     {
       type: 'doc',
       id: 'others',
-      label: '其他',
+      label: '无意识（短篇）',
     },
   ],
 };
