@@ -307,7 +307,7 @@ hide_table_of_contents: true
 <!-- 底部导航：下一篇 -->
 <div class="doc-nav bottom-nav">
   <a href="/unconscious/doc4" class="nav-link next">
-    <span class="nav-text">下一篇：文档4</span>
+    <span class="nav-text">下一篇：玩偶无意识</span>
     <span class="nav-arrow">→</span>
   </a>
 </div>
