@@ -6,9 +6,9 @@ title: 无意识文档库
 
 <!-- 分页导航 -->
 <div className="pagination">
-  <label htmlFor="page1-radio" className="page-btn active">第 1 页</label>
-  <label htmlFor="page2-radio" className="page-btn">第 2 页</label>
-  <label htmlFor="page3-radio" className="page-btn">第 3 页</label>
+  <label htmlFor="page1-radio" className="page-btn page-prev">◀</label>
+  <span className="page-info" id="page-info">1/3</span>
+  <label htmlFor="page3-radio" className="page-btn page-next">▶</label>
 </div>
 
 <!-- 隐藏的单选框，用于控制页面显示 -->
@@ -224,22 +224,27 @@ title: 无意识文档库
 .pagination {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
+  gap: 15px;
   margin: 2rem 0 3rem 0;
   flex-wrap: wrap;
 }
 
 .page-btn {
-  display: inline-block;
-  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   background: #f8f9fa;
   border: 1px solid #dee2e6;
   border-radius: 6px;
   text-decoration: none;
   color: #495057;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: all 0.2s ease;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .page-btn:hover {
@@ -247,24 +252,47 @@ title: 无意识文档库
   border-color: #adb5bd;
 }
 
-/* 按钮激活状态 - 深黑色背景 */
-.page-btn.active,
-#page1-radio:checked ~ .pagination label[for="page1-radio"],
-#page2-radio:checked ~ .pagination label[for="page2-radio"],
-#page3-radio:checked ~ .pagination label[for="page3-radio"] {
-  background: #000000;
-  color: white;
-  border-color: #000000;
+.page-info {
+  font-size: 1rem;
+  color: #495057;
   font-weight: 500;
+  padding: 0 10px;
 }
 
-/* 当其他单选框选中时，移除第一页的active类效果 */
-#page2-radio:checked ~ .pagination label[for="page1-radio"],
-#page3-radio:checked ~ .pagination label[for="page1-radio"] {
-  background: #f8f9fa;
-  color: #495057;
-  border-color: #dee2e6;
-  font-weight: normal;
+/* 页面信息显示控制 */
+#page1-radio:checked ~ .pagination .page-info::after {
+  content: "1/3";
+}
+
+#page2-radio:checked ~ .pagination .page-info::after {
+  content: "2/3";
+}
+
+#page3-radio:checked ~ .pagination .page-info::after {
+  content: "3/3";
+}
+
+/* 翻页按钮逻辑 */
+/* 第一页时隐藏上一页按钮 */
+#page1-radio:checked ~ .pagination .page-prev {
+  visibility: hidden;
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* 最后一页时隐藏下一页按钮 */
+#page3-radio:checked ~ .pagination .page-next {
+  visibility: hidden;
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* 翻页按钮标签对应关系 */
+.page-prev {
+  /* 上一页：从当前页减1 */
+}
+.page-next {
+  /* 下一页：从当前页加1 */
 }
 
 /* 文档网格 */
@@ -379,12 +407,71 @@ title: 无意识文档库
   }
   
   .pagination {
-    gap: 8px;
+    gap: 10px;
   }
   
   .page-btn {
-    padding: 6px 12px;
+    width: 36px;
+    height: 36px;
     font-size: 0.9rem;
   }
 }
 `}</style>
+
+<script>{`
+// 动态更新翻页按钮的目标
+document.addEventListener('DOMContentLoaded', function() {
+  // 初始设置页面信息
+  updatePageInfo();
+  
+  // 监听单选框变化
+  const radios = document.querySelectorAll('input[type="radio"][name="page"]');
+  radios.forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      updatePageInfo();
+      updateNavButtons();
+    });
+  });
+  
+  // 初始更新导航按钮
+  updateNavButtons();
+  
+  function updatePageInfo() {
+    const pageInfo = document.getElementById('page-info');
+    if (!pageInfo) return;
+    
+    const checkedRadio = document.querySelector('input[type="radio"][name="page"]:checked');
+    if (checkedRadio) {
+      const pageNum = checkedRadio.id.replace('page', '').replace('-radio', '');
+      pageInfo.textContent = pageNum + '/3';
+    }
+  }
+  
+  function updateNavButtons() {
+    const checkedRadio = document.querySelector('input[type="radio"][name="page"]:checked');
+    if (!checkedRadio) return;
+    
+    const currentPage = parseInt(checkedRadio.id.replace('page', '').replace('-radio', ''));
+    
+    // 更新上一页按钮
+    const prevBtn = document.querySelector('.page-prev');
+    if (prevBtn && currentPage > 1) {
+      const prevPage = currentPage - 1;
+      prevBtn.setAttribute('for', 'page' + prevPage + '-radio');
+      prevBtn.style.visibility = 'visible';
+      prevBtn.style.opacity = '1';
+      prevBtn.style.cursor = 'pointer';
+    }
+    
+    // 更新下一页按钮
+    const nextBtn = document.querySelector('.page-next');
+    if (nextBtn && currentPage < 3) {
+      const nextPage = currentPage + 1;
+      nextBtn.setAttribute('for', 'page' + nextPage + '-radio');
+      nextBtn.style.visibility = 'visible';
+      nextBtn.style.opacity = '1';
+      nextBtn.style.cursor = 'pointer';
+    }
+  }
+});
+`}</script>
