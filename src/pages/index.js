@@ -55,21 +55,21 @@ export default function Home() {
             <Link to="/unconscious" className={styles.categoryCard}>
               <div className={styles.categoryContent}>
                 <h3>无意识</h3>
-                <p>查看无意识相关文档</p>
+                <p>查看无意识文章</p>
               </div>
             </Link>
             
             <Link to="/gts" className={styles.categoryCard}>
               <div className={styles.categoryContent}>
                 <h3>GTS</h3>
-                <p>查看GTS相关文档</p>
+                <p>查看GTS文章</p>
               </div>
             </Link>
             
             <Link to="/others" className={styles.categoryCard}>
               <div className={styles.categoryContent}>
-                <h3>其余分类</h3>
-                <p>查看其他文档</p>
+                <h3>无意识（短篇）</h3>
+                <p>查看无意识（短篇）文章</p>
               </div>
             </Link>
           </div>
