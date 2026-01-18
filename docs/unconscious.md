@@ -28,8 +28,8 @@ title: 无意识文档库
       <p>依旧经典长篇</p>
     </a>
     <a href="/unconscious/doc3" className="doc-card">
-      <h3>文档 3</h3>
-      <p>第1页的第三个文档</p>
+      <h3>用隐身能力被无意识踩踏</h3>
+      <p>emmmmm......</p>
     </a>
     <a href="/unconscious/doc4" className="doc-card">
       <h3>文档 4</h3>
