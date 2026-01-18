@@ -1,8 +1,8 @@
 ---
 title: 在小萝莉课桌下生活的一星期
-description: No
+description: 1-7
 sidebar_position: 1
-hide_table_of_contents: true  # 隐藏右侧导航栏
+hide_table_of_contents: true
 ---
 
 <!-- 顶部导航：这是第一篇 -->
@@ -10,7 +10,9 @@ hide_table_of_contents: true  # 隐藏右侧导航栏
   <span class="no-nav">这是第一篇文档，不可向前跳转</span>
 </div>
 
-# 在小萝莉课桌下生活的一星期
+<div class="doc-content">
+  <h1>在小萝莉课桌下生活的一星期</h1>
+  
 魔都第二女子中学，是一所极为特殊的学校，以严格的规定著称。
 要进入这里的学生，都必须要求成绩优异，且相貌出众，是名副其实的贵族女校。
 这所学校有一个特色设计，那就是封闭式的课桌，学生坐下后，会上锁，一直持续到下课为止，锁才能打开，且离开后会再次上锁。
@@ -209,6 +211,8 @@ hide_table_of_contents: true  # 隐藏右侧导航栏
 似乎是感觉到包皮的存在可以上下的撸动，她的两只鞋跟一同踩住了左右两侧的蛋蛋，然后用鞋的侧面一起夹住了我的肉棒，开始用两只脚撸动。本来或许在这还无章法的蹂躏下我还能坚持一会，这已经是直接的足交了啊。
 鞋跟踩住蛋蛋的痛苦，与鞋子摩擦包皮撸动下产生的快感，我立刻发射了出去，可女孩发觉肉棒的颤动后，撸动的更来劲了，我也被迫的开始接着射精，这近乎榨精的方式，直接榨干了我的力气，再一次的，我晕倒在了女孩子的鞋底下面。
 
+</div>
+
 <!-- 底部导航：下一篇 -->
 <div class="doc-nav bottom-nav">
   <a href="/unconscious/doc2" class="nav-link next">
@@ -224,6 +228,13 @@ hide_table_of_contents: true  # 隐藏右侧导航栏
 </div>
 
 <style>{`
+/* 文档内容容器 */
+.doc-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 /* 文档导航样式 */
 .doc-nav {
   margin: 2rem 0;
@@ -310,20 +321,29 @@ hide_table_of_contents: true  # 隐藏右侧导航栏
   box-shadow: 0 4px 15px rgba(45, 55, 72, 0.2);
 }
 
-/* 内容居中样式 */
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* 覆盖Docusaurus默认样式 */
-article {
+/* 强制覆盖Docusaurus样式 */
+.theme-doc-markdown {
   max-width: 800px !important;
   margin: 0 auto !important;
+  width: 100% !important;
+}
+
+/* 标题样式控制 */
+.doc-content h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+}
+
+.doc-content h2 {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1rem 0;
+  color: #2d3748;
+}
+
+.doc-content p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #4a5568;
 }
 `}</style>
-
-<div class="container">
-<!-- 注意：实际内容需要在container内 -->
-</div>
