@@ -72,6 +72,27 @@ export default function Home() {
                 <p>查看无意识（短篇）文章</p>
               </div>
             </Link>
+
+    <Link to="/unconscious" className={styles.categoryCard}>
+              <div className={styles.categoryContent}>
+                <h3>这是个按钮</h3>
+                <p>说点不知道的</p>
+              </div>
+            </Link>
+
+    <Link to="/unconscious" className={styles.categoryCard}>
+              <div className={styles.categoryContent}>
+                <h3>这是个按钮</h3>
+                <p>说点不知道的</p>
+              </div>
+            </Link>
+
+    <Link to="/unconscious" className={styles.categoryCard}>
+              <div className={styles.categoryContent}>
+                <h3>这是个按钮</h3>
+                <p>说点不知道的</p>
+              </div>
+            </Link>
           </div>
         </div>
       </main>
