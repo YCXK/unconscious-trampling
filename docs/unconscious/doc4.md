@@ -315,7 +315,7 @@ hide_table_of_contents: true
 <!-- 底部导航：下一篇 -->
 <div class="doc-nav bottom-nav">
   <a href="/unconscious/doc5" class="nav-link next">
-    <span class="nav-text">下一篇：文档5</span>
+    <span class="nav-text">下一篇：躲在布娃娃内被无意识踩踏</span>
     <span class="nav-arrow">→</span>
   </a>
 </div>
