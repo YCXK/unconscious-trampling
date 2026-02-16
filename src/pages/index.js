@@ -13,6 +13,7 @@ function HomepageHeader() {
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
           <p className={styles.heroSubtitle}>Made by EASODCLUTSS</p>
+          <p className={styles.heroSubtitle}>新年快乐</p>
         </div>
       </div>
     </header>
