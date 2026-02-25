@@ -6,7 +6,7 @@ title: 无意识文档库
 
 <!-- 分页导航 -->
 <div className="pagination">
-  <label htmlFor="page1-radio" className="page-btn active">第 1 页</label>
+  <label htmlFor="page1-radio" className="page-btn">第 1 页</label>
   <label htmlFor="page2-radio" className="page-btn">第 2 页</label>
   <label htmlFor="page3-radio" className="page-btn">第 3 页</label>
 </div>
